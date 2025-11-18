@@ -203,7 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const q = localQuotes[Math.floor(Math.random() * localQuotes.length)];
     el.innerHTML = `\"${q.content}\" — <em>${q.author}</em>`;
   }
-
+  
+  showQuote(localQuotes[Math.floor(Math.random() * localQuotes.length)]);
+  
   // Exibe JSON da API quotable (formato conhecido)
   function showQuotable(data) {
     if (data && data.content) {
