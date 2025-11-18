@@ -1,0 +1,7 @@
+"0","reticulate::repl_python()"
+"2","Error in python_config_impl(python) : 
+  Error running '/Users/william/Library/Caches/org.R-project.R/R/reticulate/uv/cache/builds-v0/.tmpuzzU4G/bin/python': No such file.
+"
+"2","Error: Installation of Python not found, Python bindings not loaded.
+See the Python ""Order of Discovery"" here: https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery.
+"

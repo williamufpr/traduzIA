@@ -1,0 +1,106 @@
+---
+pagetitle: "IA Traduzida "
+subtitle: "Simplificando tópicos da IA para leitores Brasileiros"
+page-layout: custom
+section-divs: false
+editor: source
+sidebar: false
+search: false
+repo-actions: false
+image: images/rwds-logo-150px.png
+
+toc: false
+---
+::: content-container
+
+::: {.top-story .purple-background}
+
+:::: columns
+
+::: column
+::: {.g-col-12 .g-col-lg-4 .top-story-text}
+## Chegamos
+
+A ideia deste site é abordar temas do campo da Inteligência Artificial para leitores Brasileiros. A abordagem será de utilizar linguagem acessivel , trazendo muito aprendizado que hoje encontra-se disponível somente no idioma inglês. Através de vários artigos procurarei trazer tópicos de IA, Aprendizado de Máquina, Ciência de Dados e outros relacionados a tecnologia .
+:::
+:::
+
+::: column
+::: {.g-col-12 .g-col-lg-8 .top-story-img}
+![](https://substackcdn.com/image/fetch/$s_!Suoy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6528139e-de82-4b0f-988d-f978dd56d47e_2802x2304.jpeg)
+:::
+:::
+
+::::
+
+:::
+
+:::  <!-- fecha top-level content-container -->
+
+::: header-text
+::: content-container
+::: header-block
+Este site utilizou-se do excelente design do projeto **Real World Data Science**, acessivel em : https://realworlddatascience.net
+:::
+:::
+:::
+::: content-container
+::: listing-block
+## Últimas Publicações
+
+::: {#latest-content}
+---
+listing: 
+  - id: latest-blogs 
+    contents: "blog"
+    type: grid 
+    sort: "date desc"
+    max-items: 3
+    fields: [image, title, date, description]
+    exclude:
+      topic: "index"
+---
+:::
+:::
+::: pullout-text
+::: pullout-container
+::: {.pullout-block .black-background}
+![](images/quote-purple.png){width="100px"}
+
+## Você já ouviu falar em aprendizado por Reforço ? Já ouviu uma propanganda anunciando que o robo aspirador de pó vai aprendendo como se deslocar na sua casa ? Pois é , é um exemplo de aplicação da técnica de Inteligência Artificial chamada Aprendizagem por Reforço. Quer ver como isso também se aplica a jogos tão simples como o nosso famoso Jogo da Velha ? .
+
+William Alencar, 'Como o computador joga o Jogo da Velha ?'
+
+::: button
+[Leia o 1o. artigo](foundation-frontiers/posts/2024/02/19/what-is-data-science.qmd)
+:::
+:::
+:::
+::: content-container
+::: listing-block
+<a href="the-pulse/index.qmd">
+
+## The Pulse
+
+</a>
+
+::: {#the-pulse}
+:::
+:::
+::: content-container
+::: listing-block
+<a href="applied-insights/index.qmd">
+
+## Applied Insights
+
+</a>
+
+::: {#applied-insights}
+:::
+:::
+
+
+
+---
+
+

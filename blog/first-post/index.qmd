@@ -1,0 +1,213 @@
+---
+title: "O Tarifaço Trump"
+description: "Análise da Pauta exportadora do Brasil e o Tarifaço de TRUMP"
+format: html
+filters:
+  - social-share
+share:
+  permalink: "https://william-alencar.quarto.pub/insightbrasil/blog/first-post"
+  description: "Artigo  Tarifaço de Trump"
+  twitter: true
+  linkedin: true
+  facebook: true
+execute: 
+  echo: false
+  warning: false   # não mostra warnings
+  message: false 
+author: "William Alencar"
+date: "8/15/2025"
+image: "../../images/graf-mapa-mundo.png"
+categories:
+  - Economia
+  - Economics
+  - Politica
+  - Politics
+---
+
+```{r setup, include=FALSE}
+# Função auxiliar: instala e carrega pacotes
+use_pkg <- function(pkg){
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg,repos = "https://cloud.r-project.org")
+  }
+  library(pkg, character.only = TRUE)
+}
+
+# Pacotes necessários
+use_pkg("gt")
+use_pkg("dplyr")
+use_pkg("scales")
+
+```
+
+A imposição de tarifas altíssimas às exportações brasileiras para os Estados Unidos agitaram a política e a economia nos últimos 30 dias.
+
+A cobertura da imprensa produziu uma perpecção de DESASTRE, de que o impacto destas tarifas iria arrasar a economia Brasileira, ainda que em alguns momentos pontuassem a verdadeira dimenssão do impacto em números.
+
+Eu fiquei impactado pela falta de um debate mais ponderado separando a política da economia, ao menos para propósitos didáticos e de melhor comunicação.
+
+Sabemos que alguns setores são impactados SEVERAMENTE e claro que deve dar-se atenção a isso mas ainda assim considero que o debate não transmitiu adequadamente algumas ponderações que me parecem bastante pertinentes.
+
+Por isso eu quis escrever alguns artigos salientando pontos que são demonstrados pelos dados disponíveis sobre esse tópico .
+
+Vamos iniciar verificando os totais e os principais destinos das exportações brasileiras.
+
+::::: columns
+::: {.column width="50%"}
+![Exportações Brasileira até julho/2025](info-export-ytd2025.png){style="float:left; margin-right:15px" width="241"}
+:::
+
+::: {.column width="50%"}
+Com números consolidados até julho deste ano (2025), o Brasil exportou US\$ 198 (cento e noventa e oito) bilhões de dólares .
+
+Vamos agora observar os principais parceiros comerciais, ou destinos da exportações brasileiras .
+:::
+:::::
+
+![Destinos de Exportações Brasil](tree-mapa-mundo.png){width:400px="" style="float:left; margin-right:15px" width="550"} Observamos que os Estados Unidos representam 12% e a China representa mais que o dobro .
+
+Claro, 12% não é desprezível mas vamos detalhar um pouco mais.
+
+O que será que vendemos aos EUA ?
+
+:::: columns
+::: {.column width="100%"}
+Observando os dados do COMEX Stat temos o quadro a seguir :
+
+![Exportações Brasileira para os EUA (até julho/2025)](graf-produtos-exp-2.png){style="float:left; margin-right:15px" width="550"}
+:::
+
+Observamos então que se tomarmos as 10 primeiras categorias já totalizamos mais de 55% das exportações brasileiras :
+
+```         
+```
+
+```         
+```
+::::
+
+```{r}
+
+
+# Criando o data frame
+dados <- tribble(
+  ~Produto,                                   ~Valor,          ~Participacao,
+  "Óleos brutos de petróleo ou...",          2884440,      12.2,
+  "Semi-acabados , lingotes ferro/aço ",        2209925,       9.3,
+  "Aeronaves e outros equipame...",        1414182,       6.0,
+  "Café não torrado",                        1297971,       5.5,
+  "Ferro-gusa, spiegel, ferro-...",        1110628,       4.7,
+  "Óleos combustíveis de petró...",         965047,       4.1,
+  "Sucos de frutas ou de vegetais",         874865,       3.7,
+  "Carne bovina fresca, refrig...",         861473,       3.6,
+  "Celulose",                               838826,       3.5,
+  "Instal e equip de engenharia ...",         718535,       3.0
+)
+
+# Criando tabela 
+
+dados %>%
+  gt() %>%
+  tab_header(
+    title = "Principais categorias de exportação aos EUA ",
+    subtitle = "SUBTITLE"
+  ) %>%
+  fmt_number(
+    columns = Valor,
+    decimals = 1,
+    use_seps = TRUE
+  ) %>%
+  fmt_number(
+    columns = Participacao,
+    decimals = 1,
+    suffixing = FALSE
+  ) %>%
+  cols_label(
+    Produto = "Produto",
+    Valor = "Valor Milhões US$ FOB",
+    Participacao = "Participação (%)"
+  ) %>%
+  data_color(
+    columns = Participacao,
+    colors = scales::col_numeric(
+      palette = c("white", "lightblue", "blue"),
+      domain = c(0, max(dados$Participacao))
+    )
+  ) %>%
+  tab_options(
+    table.font.size = px(14),
+    data_row.padding = px(6)
+  )
+```
+
+:::: columns
+::: {.column width="100%"}
+Analisando as categorias observamos que as 3 (três) primeiras receberam a isenção da tarifa adicional de 40% ( uma vez que o governo americano aplicou 10% como tarifa padrão às importações )
+
+Então de maneira concreta, a primeira pauta de exportações brasileiras realmente impactada foi o café, que representa 5,5% das exportações do período ou US\$ 1,29 bilhões ( Um bilhão e 290 milhões de dólares )
+
+É um bocado de dinheiro, mas fica pequeno perto dos quase 200 bilhões em exportações brasileiras ( US\$ 198 bilhões para ser mais preciso ) no período.
+
+Agora vamos mudar a perspectiva e olhar o que esses US\$ 1.29 bilhões em compras de café significam para os EUA.
+
+Segundo dados da DATAGRO as importações de café dos EUA têm a seguinte distribuição :
+:::
+::::
+
+```{python}
+#| include: false
+#| fig-cap: "Distribuição das Importações de Café pelos EUA  2025 (até julho)"
+
+
+import matplotlib.pyplot as plt
+
+# Dados da tabela
+paises = ["Brasil", "Colômbia", "Honduras", "Guatemala", "Outros"]
+valores = [2600000, 500000, 300000, 150000, 163000]
+
+# Cores para cada fatia
+cores = ["#8B4513", "#CD853F", "#D2691E", "#A0522D", "#DEB887"]
+
+# Criando a figura
+fig, ax = plt.subplots(figsize=(8, 6), subplot_kw=dict(aspect="equal"))
+
+# Gráfico de setores com efeito "3D" (sombra + explode)
+explode = (0.05, 0.05, 0.05, 0.05, 0.05)
+
+wedges, texts, autotexts = ax.pie(
+    valores, 
+    labels=paises, 
+    autopct="%1.1f%%", 
+    startangle=140,
+    colors=cores,
+    explode=explode,
+    shadow=True,     # cria efeito de sombra
+    wedgeprops={"linewidth": 1, "edgecolor": "white"}
+)
+
+# Ajustes estéticos
+plt.setp(autotexts, size=10, weight="bold", color="white")
+ax.set_title("Importações de Café pelos EUA (Volume em sacas de 60kg)", fontsize=14, weight="bold")
+
+# plt.show()
+```
+
+```{=html} 
+<iframe src="coffee-info.html" width="100%" height="800px" style="border:1px solid #ccc; padding: 3px;">
+
+</iframe>
+
+
+```
+## 
+
+O que se observa nesta distribuição dos fornecedores de café Não Torrado aos EUA ?
+
+É inegavel a dominância do Brasil como principal provedor do produto o mercado americano ( Estadunidense ).
+
+E essa posição estabelece alguns parâmetros importantes tanto para o lado vendedor (Brasil) quanto para o lado comprador ( EUA )
+
+Vamos abordar estes pontos no próximo artigo.
+
+*Até lá*
+

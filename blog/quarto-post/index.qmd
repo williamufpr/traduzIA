@@ -1,0 +1,24 @@
+---
+title: "O Código do Jogo da Velha para o Aprendizado por Reforço"
+description: "Apresentando as estruturas de dados do Jogo da Velha "
+format: html
+filters:
+  - social-share
+share:
+  permalink: "https://william-alencar.quarto.pub/traduzia/blog/quarto-post"
+  description: "Evolução do aproveitamento do ENEM "
+  twitter: true
+  linkedin: true
+  facebook: true
+execute: 
+  echo: false
+  warning: false   # não mostra warnings
+  message: false 
+author: "William Alencar"
+date: "11/15/2025"
+image: "../../images/tic-tac-toe.png"
+categories:
+  - Machine Learning
+---
+
+

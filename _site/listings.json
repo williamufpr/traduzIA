@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/latest-content.html",
+    "items": []
+  },
+  {
+    "listing": "/home.html",
+    "items": [
+      "/blog/quarto-post/index.html",
+      "/blog/second-post/index.html",
+      "/blog/third-post/index.html",
+      "/blog/first-post/index.html"
+    ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/quarto-post/index.html",
+      "/blog/third-post/index.html",
+      "/blog/first-post/index.html",
+      "/blog/second-post/index.html"
+    ]
+  }
+]

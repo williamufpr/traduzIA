@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "about-me.html",
+    "href": "about-me.html",
+    "title": "Quem Sou Eu",
+    "section": "",
+    "text": "Sou entusiasta de Inteligência Artificial, Ciência de Dados e Computação Aplicada. Meu objetivo é traduzir conceitos avançados dessas áreas para uma linguagem clara e acessível para leitores brasileiros.\nMinha formação\n\nBacharel em Ciência da Computação pela Universidade Federal de Goiás\nPós Graduação em Inteligência Artificial Aplicada pela Universidade Federal do Paraná\nMBA em Marketing Estratégico pela Fundação Getúlio Vargas\n\nAo longo dos meus estudos e projetos, tenho me dedicado a explorar temas como:\n\nAprendizado de Máquina\nIA Generativa\nEstatística aplicada\nVisualização de dados\nMétodos modernos de publicação técnica (Quarto, Hugo, GitHub Pages)\n\nAcredito que conhecimento só faz sentido quando compartilhado.\n\n\n\nAbaixo está uma pequena chamada de API para exibir uma frase ou provérbio aleatório sempre que a página for renderizada. O exemplo utiliza um fetch em JavaScript e popula um bloco dinâmico.\n\n\n\nCarregando frase…\n\n\n\n\n\n\n\n\n\n\nGitHub: https://github.com/williambsb\nLinkedIn: https://www.linkedin.com/in/seu-perfil\nE-mail: seuemail@example.com"
+  },
+  {
+    "objectID": "about-me.html#olá-eu-sou-william-alencar",
+    "href": "about-me.html#olá-eu-sou-william-alencar",
+    "title": "Quem Sou Eu",
+    "section": "",
+    "text": "Sou entusiasta de Inteligência Artificial, Ciência de Dados e Computação Aplicada. Meu objetivo é traduzir conceitos avançados dessas áreas para uma linguagem clara e acessível para leitores brasileiros.\nMinha formação\n\nBacharel em Ciência da Computação pela Universidade Federal de Goiás\nPós Graduação em Inteligência Artificial Aplicada pela Universidade Federal do Paraná\nMBA em Marketing Estratégico pela Fundação Getúlio Vargas\n\nAo longo dos meus estudos e projetos, tenho me dedicado a explorar temas como:\n\nAprendizado de Máquina\nIA Generativa\nEstatística aplicada\nVisualização de dados\nMétodos modernos de publicação técnica (Quarto, Hugo, GitHub Pages)\n\nAcredito que conhecimento só faz sentido quando compartilhado."
+  },
+  {
+    "objectID": "about-me.html#frase-do-dia",
+    "href": "about-me.html#frase-do-dia",
+    "title": "Quem Sou Eu",
+    "section": "",
+    "text": "Abaixo está uma pequena chamada de API para exibir uma frase ou provérbio aleatório sempre que a página for renderizada. O exemplo utiliza um fetch em JavaScript e popula um bloco dinâmico.\n\n\n\nCarregando frase…"
+  },
+  {
+    "objectID": "about-me.html#como-me-encontrar",
+    "href": "about-me.html#como-me-encontrar",
+    "title": "Quem Sou Eu",
+    "section": "",
+    "text": "GitHub: https://github.com/williambsb\nLinkedIn: https://www.linkedin.com/in/seu-perfil\nE-mail: seuemail@example.com"
+  },
+  {
+    "objectID": "blog/first-post/index.html",
+    "href": "blog/first-post/index.html",
+    "title": "O Tarifaço Trump",
+    "section": "",
+    "text": "A imposição de tarifas altíssimas às exportações brasileiras para os Estados Unidos agitaram a política e a economia nos últimos 30 dias.\nA cobertura da imprensa produziu uma perpecção de DESASTRE, de que o impacto destas tarifas iria arrasar a economia Brasileira, ainda que em alguns momentos pontuassem a verdadeira dimenssão do impacto em números.\nEu fiquei impactado pela falta de um debate mais ponderado separando a política da economia, ao menos para propósitos didáticos e de melhor comunicação.\nSabemos que alguns setores são impactados SEVERAMENTE e claro que deve dar-se atenção a isso mas ainda assim considero que o debate não transmitiu adequadamente algumas ponderações que me parecem bastante pertinentes.\nPor isso eu quis escrever alguns artigos salientando pontos que são demonstrados pelos dados disponíveis sobre esse tópico .\nVamos iniciar verificando os totais e os principais destinos das exportações brasileiras.\nObservamos que os Estados Unidos representam 12% e a China representa mais que o dobro .\nClaro, 12% não é desprezível mas vamos detalhar um pouco mais.\nO que será que vendemos aos EUA ?"
+  },
+  {
+    "objectID": "blog/first-post/index.html#section",
+    "href": "blog/first-post/index.html#section",
+    "title": "O Tarifaço Trump",
+    "section": "",
+    "text": "O que se observa nesta distribuição dos fornecedores de café Não Torrado aos EUA ?\nÉ inegavel a dominância do Brasil como principal provedor do produto o mercado americano ( Estadunidense ).\nE essa posição estabelece alguns parâmetros importantes tanto para o lado vendedor (Brasil) quanto para o lado comprador ( EUA )\nVamos abordar estes pontos no próximo artigo.\nAté lá"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog Index",
+    "section": "",
+    "text": "O Código do Jogo da Velha para o Aprendizado por Reforço\n\n\nApresentando as estruturas de dados do Jogo da Velha\n\n\n\nWilliam Alencar\n\n\nNov 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nO Tarifaço Trump\n\n\nAnálise da Pauta exportadora do Brasil e o Tarifaço de TRUMP\n\n\n\nWilliam Alencar\n\n\nAug 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nO Tarifaço Trump\n\n\nAnálise da Pauta exportadora do Brasil e o Tarifaço de TRUMP\n\n\n\nWilliam Alencar\n\n\nAug 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTarifaço Trump sobre o Café Brasileiro\n\n\nAnálise Competitiva das exportações de café não Torrado do Brasil para os Estados Unidos\n\n\n\nWilliam Alencar\n\n\nAug 23, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/second-post/index.html",
+    "href": "blog/second-post/index.html",
+    "title": "Tarifaço Trump sobre o Café Brasileiro",
+    "section": "",
+    "text": "No artigo anterior apresentamos o quadro de importações de café não torrado pelos Estados Unidos (EUA).\nVerificamos que o Brasil é lider absoluto , entregando cerca de 70% do café não torrado importado pelos EUA , tendo a Colômbia lá atrás com pouco mais de 13% .\nQuando estudamos a competição numa indústria ( mercado ) é inevitável recorrermos aos ensinamentos de Porter (1979) e seu modelo de 5 forças.\nNo caso das importações/exportações de café entre EUA e Brasil é claro que 2 forças são mais preponderantes para nossa análise :\n\nPoder de barganha do Comprador\nPoder de barganha do Vendedor\n\nNuma análise inicial podemos ser levados a considerar que o poder do Comprador é majoritário , afinal que fornecedor não temeria perder seu principal cliente.\nConcentrando 70% de suas compras com o Brasil, os EUA é o principal destino das exportações de café não torrado do Brasil representando quase 17% das vendas .\nPorém estamos falando de uma comodity que passou por turbulências nos últimos anos com quebras de safra em importantes paises produtores e forte baixa de estoques .\nDiferente de produtos manufaturados simples , comodities como o café dependem de safras e a produção não cresce tão rapidamente .\nBrasil e Vietnã , entre outras regiões produtoras, tiveram problemas nas safras de café , o que inclusive provocou forte pressão sobre os preços globais.\nIsso significa que um grande comprador não tem facilidade em substituir um fornecedor já estabelecido de forma rápida e prática .\nPortanto, é bem razoável considerar que neste contexto, a outra força em questão, o Poder de Barganha do Vendedor tem boa relevância .\nAs tentativas brasileiras de renegociação sobre as tarifas impostas pelo governo Trump precisam perseguir a racionalidade sem deixar de se valer de sua posição de fornecedor fundamental para que o consumidor Americano siga tendo acesso a um bom café com preços competitivos.\nNão se trata de ignorar a situação e apenas esperar, ninguém pode dar-se a este luxo relativamente aos EUA , mas o Brasil precisa deixar claro que compreende o cenário competitivo e claro, também buscar novos mercados, sempre.\n\n\n\n\nReferences\n\nPorter, Michael E. 1979. “How Competitive Forces Shape Strategy.” Harvard Business Review 57 (2): 137–45."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]

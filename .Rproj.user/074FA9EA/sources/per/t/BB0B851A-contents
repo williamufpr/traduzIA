@@ -1,0 +1,70 @@
+project:
+  type: website
+  output-dir: _site
+  resources: 
+    - "!data/**"
+    - "blog/first-post/*.html"
+    
+website:
+  title: "IA Traduzida"
+
+  image: "images/rwds-logo-150px.png"
+  open-graph: true
+  page-footer:
+    background: "#000000"
+    left: [Copyright &copy; William Alencar]
+    center:
+      - href: https://github.com/williamufpr
+        icon: github
+        aria-label: GitHub
+      - href: https://www.linkedin.com/williambr71
+        icon: linkedin
+        aria-label: LinkedIn
+       
+  navbar:
+    toggle-position: right
+    background:  "#f0eeeb"
+    logo: images/rwds-logo-150px.png
+    logo-alt: "Real World Data Science brand"
+    title: false
+    collapse-below: lg
+    
+    left:
+      - text: Home
+        href: index.qmd 
+        icon: "fa-solid fa-house"
+      - text: "{{<fa solid pencil>}}Blog"
+        href: blog/index.qmd
+    
+    right:     
+      - text: "Sobre o traduzIA"
+        menu: 
+        - text: "Quem ?"
+          href: about-me.qmd
+        - text: "Faça Contato"
+          href: contact.qmd
+   
+
+
+  page-navigation: true
+  back-to-top-navigation: false
+
+ 
+
+format:
+  html:
+    theme: [lux, rwds.scss]
+    css: rwds.css
+    toc: true
+    grid:
+      sidebar-width: 0px
+      body-width: 1000px
+      margin-width: 100px
+
+execute: 
+  freeze: auto
+  enabled: true
+  eval: false
+
+
+
