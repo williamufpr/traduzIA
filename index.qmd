@@ -48,16 +48,15 @@ A ideia deste site é abordar temas do campo da Inteligência Artificial para le
 :::: {#latest-articles-section}
 ## Artigos Recentes
 ---
-
 listing: 
-  - id: latest-blogs 
-    contents: "blog"
-    type: grid 
-    sort: "date desc"
-    max-items: 3
-    fields: [image, title, date, description]
-    exclude:
-      topic: "index"
+  id: latest-blogs 
+  contents: "blog"
+  type: grid 
+  sort: "date desc"
+  max-items: 3
+  fields: [image, title, date, description]
+  exclude:
+    topic: "index"
 ---
 
 ::: {#latest-blogs}

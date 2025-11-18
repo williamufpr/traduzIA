@@ -3,6 +3,9 @@
     "home.qmd": [
       "blog"
     ],
+    "index.qmd": [
+      "blog"
+    ],
     "blog/index.qmd": [
       "/"
     ],

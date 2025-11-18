@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,13 +70,73 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-latest-blogs .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-latest-blogs'] = new List('listing-latest-blogs', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="rwds.css">
 <meta property="og:title" content="IA Traduzida">
 <meta property="og:description" content="Simplificando tópicos da IA para leitores Brasileiros">
-<meta property="og:image" content="images/rwds-logo-150px.png">
+<meta property="og:image" content="https://william-alencar.quarto.pub/traduzia/images/rwds-logo-150px.png">
 <meta property="og:site_name" content="IA Traduzida">
+<meta property="og:image:height" content="150">
+<meta property="og:image:width" content="259">
 </head>
 
 <body class="nav-fixed">
@@ -175,13 +237,81 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="latest-articles-section">
 <h2 id="artigos-recentes" class="anchored">Artigos Recentes</h2>
-<hr>
-<p>listing: - id: latest-blogs contents: “blog” type: grid sort: “date desc” max-items: 3 fields: [image, title, date, description] exclude: topic: “index”</p>
-<hr>
-<div id="latest-blogs">
+<div id="listing-latest-blogs" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="TWFjaGluZSUyMExlYXJuaW5n" data-listing-date-sort="1763175600000" data-listing-file-modified-sort="1763252813226" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./blog/quarto-post/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/tic-tac-toe.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+O Código do Jogo da Velha para o Aprendizado por Reforço
+</h5>
+<div class="card-text listing-description">
+Apresentando as estruturas de dados do Jogo da Velha
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Nov 15, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="RWNvbm9taWElMkNFY29ub21pY3MlMkNQb2xpdGljYSUyQ1BvbGl0aWNzJTJDRGF0YQ==" data-listing-date-sort="1755918000000" data-listing-file-modified-sort="1757781140059" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
+<a href="./blog/second-post/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./blog/second-post/exportacao-cafe.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tarifaço Trump sobre o Café Brasileiro
+</h5>
+<div class="card-text listing-description">
+Análise Competitiva das exportações de café não Torrado do Brasil para os Estados Unidos
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Aug 23, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="RXhwb3J0YXRpb24=" data-listing-date-sort="1755226800000" data-listing-file-modified-sort="1763252893186" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./blog/third-post/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/graf-mapa-mundo.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+O Tarifaço Trump
+</h5>
+<div class="card-text listing-description">
+Análise da Pauta exportadora do Brasil e o Tarifaço de TRUMP
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Aug 15, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</div>
 
-</div>
-</div>
 
 
 
@@ -276,7 +406,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/william-alencar\.quarto\.pub\/traduzia");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
