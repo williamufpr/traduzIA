@@ -78,10 +78,8 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="O Código do Jogo da Velha para o Aprendizado por Reforço – IA Traduzida">
 <meta property="og:description" content="Apresentando as estruturas de dados do Jogo da Velha">
-<meta property="og:image" content="https://william-alencar.quarto.pub/traduzia/images/tic-tac-toe.png">
+<meta property="og:image" content="../../images/tic-tac-toe.png">
 <meta property="og:site_name" content="IA Traduzida">
-<meta property="og:image:height" content="506">
-<meta property="og:image:width" content="772">
 </head>
 
 <body class="nav-fixed">
@@ -138,8 +136,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#o-jogo-da-velha-ou-tic-tac-toe" id="toc-o-jogo-da-velha-ou-tic-tac-toe" class="nav-link active" data-scroll-target="#o-jogo-da-velha-ou-tic-tac-toe">O jogo da velha ou Tic Tac Toe</a>
+  <ul class="collapse">
+  <li><a href="#o-campo-de-batalha" id="toc-o-campo-de-batalha" class="nav-link" data-scroll-target="#o-campo-de-batalha">O campo de batalha</a></li>
+  <li><a href="#como-o-computador-joga" id="toc-como-o-computador-joga" class="nav-link" data-scroll-target="#como-o-computador-joga">Como o computador Joga ?</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -183,8 +191,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="o-jogo-da-velha-ou-tic-tac-toe" class="level1">
+<h1>O jogo da velha ou Tic Tac Toe</h1>
+<p>Todo mundo já jogou o Jogo da Velha não é mesmo ?</p>
+<p>O jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.</p>
+<p>Mas você já imaginou de que forma um computador jogaria este jogo tão simples ?</p>
+<iframe src="tic-tac-toe-new.html" width="220" height="220" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+</iframe>
+<p>Essa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.</p>
+<p>Este artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .</p>
+<section id="o-campo-de-batalha" class="level3">
+<h3 class="anchored" data-anchor-id="o-campo-de-batalha">O campo de batalha</h3>
+<p>O conhecido traçado de duas linhas horizontais e duas linhas verticais é o “tabuleiro” do jogo da velha.</p>
+<p>Para os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.</p>
+<p>Como, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador .</p>
+<p>Vamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha.</p>
+<div id="9949be38" class="cell center-output" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code> Tabuleiro do JOgo da Velha
 
 
+   |   |  
+------------
+   |   |  
+------------
+   |   |  
+
+
+Tipo de dado:  &lt;class 'list'&gt; Tamanho :  3
+Fim</code></pre>
+</div>
+</div>
+<p>Acima vemos que a estrutura é uma lista de tamanho 3 ( 3 linhas ) no python.</p>
+</section>
+<section id="como-o-computador-joga" class="level3">
+<h3 class="anchored" data-anchor-id="como-o-computador-joga">Como o computador Joga ?</h3>
+<p>Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? Nós, humanos, utilizamos o chamado raciocínio <a href="https://www.significados.com.br/heuristica/">heurístico</a> ( o link te leva para um bom artigo em português caso deseja aprender mais ) e reconhcimento de padrões.</p>
+<p>É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades .</p>
+<p>Mas o computador não possui raciocínio heurístico então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele, quando do oponente ( que também pode ser um programa ).</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -277,7 +325,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/william-alencar\.quarto\.pub\/traduzia");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -635,7 +683,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<div class="page-columns page-rows-contents page-layout-article"><div class="social-share"><a href="https://twitter.com/share?url=https://william-alencar.quarto.pub/traduzia/blog/quarto-post&amp;text=Evolução do aproveitamento do ENEM" target="_blank" class="twitter"><i class="fab fa-twitter fa-fw fa-lg"></i></a><a href="https://www.linkedin.com/shareArticle?url=https://william-alencar.quarto.pub/traduzia/blog/quarto-post&amp;title=Evolução do aproveitamento do ENEM" target="_blank" class="linkedin"><i class="fa-brands fa-linkedin-in fa-fw fa-lg"></i></a><a href="https://www.facebook.com/sharer.php?u=https://william-alencar.quarto.pub/traduzia/blog/quarto-post" target="_blank" class="facebook"><i class="fab fa-facebook-f fa-fw fa-lg"></i></a></div></div>
+<div class="page-columns page-rows-contents page-layout-article"><div class="social-share"><a href="https://twitter.com/share?url=https://019a9469-e8d3-a54b-1463-98a459a454d1.share.connect.posit.cloud/&amp;text=Apresentando Estruturas de dados do Jogo da Velha" target="_blank" class="twitter"><i class="fab fa-twitter fa-fw fa-lg"></i></a><a href="https://www.linkedin.com/shareArticle?url=https://019a9469-e8d3-a54b-1463-98a459a454d1.share.connect.posit.cloud/&amp;title=Apresentando Estruturas de dados do Jogo da Velha" target="_blank" class="linkedin"><i class="fa-brands fa-linkedin-in fa-fw fa-lg"></i></a><a href="https://www.facebook.com/sharer.php?u=https://019a9469-e8d3-a54b-1463-98a459a454d1.share.connect.posit.cloud/" target="_blank" class="facebook"><i class="fab fa-facebook-f fa-fw fa-lg"></i></a></div></div>
 
 
 

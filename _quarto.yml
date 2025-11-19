@@ -64,7 +64,7 @@ format:
 execute: 
   freeze: auto
   enabled: true
-  eval: false
+  python: code/venv/bin/python
 
 
 

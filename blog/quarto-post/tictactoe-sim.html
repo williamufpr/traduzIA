@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simulação Tic-Tac-Toe</title>
+<style>
+  :root{
+    --bg: #ffffff;
+    --cell-bg: #fbfbfd;
+    --cell-border: #d1d5db;
+    --x-color: #ef4444;    /* red */
+    --o-color: #2563eb;    /* blue */
+    --accent: #06b6d4;     /* teal */
+    --shadow: 0 8px 24px rgba(15,23,42,0.08);
+    --size: 220px; /* default iframe content size */
+    --cell-gap: 8px;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #0f172a;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  .wrap{
+    box-sizing:border-box;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    flex-direction:column;
+    min-height:100%;
+  }
+
+  .board-frame{
+    width:var(--size);
+    height:var(--size);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(180deg, rgba(6,182,212,0.03), rgba(6,182,212,0.01));
+    border-radius:14px;
+    padding:16px;
+    box-shadow: var(--shadow);
+  }
+
+  .board {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--cell-gap);
+    width:100%;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    background: transparent;
+  }
+
+  .cell {
+    background: var(--cell-bg);
+    border-radius:10px;
+    border: 2px solid var(--cell-border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size: clamp(28px, 5.5vw, 46px);
+    color: #111827;
+    user-select:none;
+    position:relative;
+    overflow:visible;
+    transition: transform 180ms cubic-bezier(.2,.9,.3,1);
+  }
+
+  /* animation when placed */
+  @keyframes placeIn {
+    0%   { transform: scale(.6); opacity: 0; filter: blur(3px); }
+    60%  { transform: scale(1.05); opacity: 1; filter: blur(0); }
+    100% { transform: scale(1); }
+  }
+
+  .cell.placed {
+    animation: placeIn 360ms cubic-bezier(.2,.9,.3,1) both;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.08) inset;
+  }
+
+  /* highlight last move */
+  .cell.last {
+    box-shadow: 0 6px 18px rgba(6,182,212,0.12);
+    outline: 3px solid rgba(6,182,212,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* styles for X and O */
+  .mark-x { color: var(--x-color); }
+  .mark-o { color: var(--o-color); }
+
+  /* controls */
+  .controls{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    margin-top:12px;
+    width:100%;
+  }
+
+  .btn {
+    background: linear-gradient(180deg,#06b6d4,#036b74);
+    color: #fff;
+    border: none;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow: 0 6px 16px rgba(3,105,120,0.12);
+    transition: transform 120ms, box-shadow 120ms;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn:active{ transform: translateY(0); }
+
+  .btn-ghost {
+    background: transparent;
+    color: #0f172a;
+    box-shadow:none;
+    border: 1px solid rgba(15,23,42,0.06);
+  }
+
+  .meta {
+    font-size: 12px;
+    color: #475569;
+    margin-top:6px;
+    text-align:center;
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cell.placed { animation: none; transform: none; transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  /* responsive for small iframes */
+  @media (max-width:260px){
+    :root{ --size: 180px; --cell-gap:6px; }
+    .wrap{ padding:10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap" role="application" aria-label="Simulação aleatória do jogo da velha">
+    <div class="board-frame" aria-hidden="false">
+      <div id="board" class="board" role="grid" aria-label="Tabuleiro do jogo da velha"></div>
+    </div>
+
+    <div class="controls" role="region" aria-label="Controles da simulação">
+      <button id="restartBtn" class="btn" aria-label="Reiniciar simulação">Reiniciar</button>
+      <button id="pauseBtn" class="btn btn-ghost" aria-pressed="false">Pausar</button>
+    </div>
+
+    <div class="meta" aria-live="polite" id="metaText">Movimentos aleatórios • Pause para inspecionar</div>
+  </div>
+
+<script>
+/* Tic-Tac-Toe random simulation with restart + pause, safe single loop */
+(function(){
+  const boardEl = document.getElementById('board');
+  const restartBtn = document.getElementById('restartBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const metaText = document.getElementById('metaText');
+
+  const size = 3;
+  let cells = Array(size*size).fill('');
+  let lastIndex = -1;
+  let running = true;
+  let speed = 600; // ms between moves
+  let loopId = 0;   // to avoid concurrent loops
+
+  function createCells(){
+    boardEl.innerHTML = '';
+    for(let i=0;i<size*size;i++){
+      const d = document.createElement('div');
+      d.className = 'cell';
+      d.setAttribute('role','gridcell');
+      d.setAttribute('data-index', String(i));
+      d.setAttribute('aria-label', `Célula ${i+1}`);
+      d.tabIndex = -1;
+      boardEl.appendChild(d);
+    }
+  }
+
+  function render(){
+    const nodes = boardEl.children;
+    for(let i=0;i<nodes.length;i++){
+      const node = nodes[i];
+      const val = cells[i];
+      node.classList.remove('placed','last','mark-x','mark-o');
+      node.textCont

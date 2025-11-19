@@ -5,8 +5,8 @@ format: html
 filters:
   - social-share
 share:
-  permalink: "https://william-alencar.quarto.pub/traduzia/blog/quarto-post"
-  description: "Evolução do aproveitamento do ENEM "
+  permalink: "https://019a9469-e8d3-a54b-1463-98a459a454d1.share.connect.posit.cloud/"
+  description: "Apresentando Estruturas de dados do Jogo da Velha"
   twitter: true
   linkedin: true
   facebook: true
@@ -21,4 +21,67 @@ categories:
   - Machine Learning
 ---
 
+# O jogo da velha ou Tic Tac Toe
 
+Todo mundo já jogou o Jogo da Velha não é mesmo ?
+
+O jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.
+
+Mas você já imaginou de que forma um computador jogaria este jogo tão simples ?
+
+<iframe 
+  src="tic-tac-toe-new.html"
+  width="220"
+  height="220"
+  style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"
+></iframe>
+  
+Essa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.
+
+Este artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .
+
+### O campo de batalha
+
+O conhecido traçado de duas linhas horizontais e duas linhas verticais é o "tabuleiro" do jogo da velha.
+
+Para os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.
+
+Como, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador . 
+
+Vamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha. 
+
+```{python}
+#| class: center-output
+def geraTabuleiro():
+  tabuleiro = [
+    [" ", " ", " "],
+    [" ", " ", " "],
+    [" ", " ", " "]
+]
+  return tabuleiro
+
+def imprimeTabuleiro(tabuleiro): 
+  print("\n")
+  for idx, row in enumerate(tabuleiro): 
+    print(" " + " | ".join(row))
+    if idx < len(tabuleiro) - 1: 
+      print("-" * (len(tabuleiro) * 4))
+  print("\n")
+  
+if __name__ == "__main__": 
+  print(" Tabuleiro do JOgo da Velha") 
+  jogo = geraTabuleiro() 
+  imprimeTabuleiro(jogo)
+  print("Tipo de dado: ", type(jogo), "Tamanho : ", len(jogo))
+  print("Fim")
+```
+
+Acima vemos que a estrutura é uma lista de tamanho 3 ( 3 linhas ) no python. 
+
+### Como o computador Joga ? 
+Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? 
+Nós, humanos, utilizamos o chamado raciocínio [heurístico](https://www.significados.com.br/heuristica/) ( o link te leva para um bom artigo em português caso deseja aprender mais ) e reconhcimento de padrões. 
+
+É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades . 
+
+Mas o computador não possui raciocínio heurístico então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele, quando do oponente ( que também pode ser um programa ). 

@@ -768,7 +768,9 @@ div.quarto-post .listing-description {
   display: flex;
   justify-content: center;
 }
-
+.center-output {
+  text-align: center;
+}
 .header-banner .header-image {
   position: absolute;
   display: none;

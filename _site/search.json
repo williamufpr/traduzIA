@@ -61,5 +61,19 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "blog/quarto-post/index.html",
+    "href": "blog/quarto-post/index.html",
+    "title": "O Código do Jogo da Velha para o Aprendizado por Reforço",
+    "section": "",
+    "text": "O jogo da velha ou Tic Tac Toe\nTodo mundo já jogou o Jogo da Velha não é mesmo ?\nO jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.\nMas você já imaginou de que forma um computador jogaria este jogo tão simples ?\n\n\nEssa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.\nEste artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .\n\nO campo de batalha\nO conhecido traçado de duas linhas horizontais e duas linhas verticais é o “tabuleiro” do jogo da velha.\nPara os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.\nComo, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador .\nVamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha.\n\n\n Tabuleiro do JOgo da Velha\n\n\n   |   |  \n------------\n   |   |  \n------------\n   |   |  \n\n\nTipo de dado:  &lt;class 'list'&gt; Tamanho :  3\nFim\n\n\nAcima vemos que a estrutura é uma lista de tamanho 3 ( 3 linhas ) no python.\n\n\nComo o computador Joga ?\nAgora vamos pensar sobre de que forma o computador decide que espaços preencher ? Nós, humanos, utilizamos o chamado raciocínio heurístico ( o link te leva para um bom artigo em português caso deseja aprender mais ) e reconhcimento de padrões.\nÉ isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades .\nMas o computador não possui raciocínio heurístico então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele, quando do oponente ( que também pode ser um programa )."
+  },
+  {
+    "objectID": "blog/quarto-post/index.html#simulação-do-jogo-da-velha",
+    "href": "blog/quarto-post/index.html#simulação-do-jogo-da-velha",
+    "title": "O Código do Jogo da Velha para o Aprendizado por Reforço",
+    "section": "",
+    "text": "Aqui está uma demonstração simples, embutida via HTML5:"
   }
 ]
