@@ -84,4 +84,6 @@ Nós, humanos, utilizamos o chamado raciocínio [heurístico](https://www.signif
 
 É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades . 
 
-Mas o computador não possui raciocínio heurístico então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele, quando do oponente ( que também pode ser um programa ). 
+Mas o computador não possui raciocínio heurístico,  então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).
+
+

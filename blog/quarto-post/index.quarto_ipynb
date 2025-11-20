@@ -1,0 +1,122 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"O Código do Jogo da Velha para o Aprendizado por Reforço\"\n",
+        "description: \"Apresentando as estruturas de dados do Jogo da Velha \"\n",
+        "format: html\n",
+        "filters:\n",
+        "  - social-share\n",
+        "share:\n",
+        "  permalink: \"https://019a9469-e8d3-a54b-1463-98a459a454d1.share.connect.posit.cloud/\"\n",
+        "  description: \"Apresentando Estruturas de dados do Jogo da Velha\"\n",
+        "  twitter: true\n",
+        "  linkedin: true\n",
+        "  facebook: true\n",
+        "execute: \n",
+        "  echo: false\n",
+        "  warning: false   # não mostra warnings\n",
+        "  message: false \n",
+        "author: \"William Alencar\"\n",
+        "date: \"11/15/2025\"\n",
+        "image: \"../../images/tic-tac-toe.png\"\n",
+        "categories:\n",
+        "  - Machine Learning\n",
+        "---\n",
+        "\n",
+        "\n",
+        "# O jogo da velha ou Tic Tac Toe\n",
+        "\n",
+        "Todo mundo já jogou o Jogo da Velha não é mesmo ?\n",
+        "\n",
+        "O jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.\n",
+        "\n",
+        "Mas você já imaginou de que forma um computador jogaria este jogo tão simples ?\n",
+        "\n",
+        "<iframe \n",
+        "  src=\"tic-tac-toe-new.html\"\n",
+        "  width=\"220\"\n",
+        "  height=\"220\"\n",
+        "  style=\"border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);\"\n",
+        "></iframe>\n",
+        "  \n",
+        "Essa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.\n",
+        "\n",
+        "Este artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .\n",
+        "\n",
+        "### O campo de batalha\n",
+        "\n",
+        "O conhecido traçado de duas linhas horizontais e duas linhas verticais é o \"tabuleiro\" do jogo da velha.\n",
+        "\n",
+        "Para os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.\n",
+        "\n",
+        "Como, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador . \n",
+        "\n",
+        "Vamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha. \n"
+      ],
+      "id": "6a551a2a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "class": "center-output"
+      },
+      "source": [
+        "def geraTabuleiro():\n",
+        "  tabuleiro = [\n",
+        "    [\" \", \" \", \" \"],\n",
+        "    [\" \", \" \", \" \"],\n",
+        "    [\" \", \" \", \" \"]\n",
+        "]\n",
+        "  return tabuleiro\n",
+        "\n",
+        "def imprimeTabuleiro(tabuleiro): \n",
+        "  print(\"\\n\")\n",
+        "  for idx, row in enumerate(tabuleiro): \n",
+        "    print(\" \" + \" | \".join(row))\n",
+        "    if idx < len(tabuleiro) - 1: \n",
+        "      print(\"-\" * (len(tabuleiro) * 4))\n",
+        "  print(\"\\n\")\n",
+        "  \n",
+        "if __name__ == \"__main__\": \n",
+        "  print(\" Tabuleiro do JOgo da Velha\") \n",
+        "  jogo = geraTabuleiro() \n",
+        "  imprimeTabuleiro(jogo)\n",
+        "  print(\"Tipo de dado: \", type(jogo), \"Tamanho : \", len(jogo))\n",
+        "  print(\"Fim\")"
+      ],
+      "id": "8cb90c56",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Acima vemos que a estrutura é uma lista de tamanho 3 ( 3 linhas ) no python. \n",
+        "\n",
+        "### Como o computador Joga ? \n",
+        "Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? \n",
+        "Nós, humanos, utilizamos o chamado raciocínio [heurístico](https://www.significados.com.br/heuristica/) ( o link te leva para um bom artigo em português caso deseja aprender mais ) e reconhcimento de padrões. \n",
+        "\n",
+        "É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades . \n",
+        "\n",
+        "Mas o computador não possui raciocínio heurístico,  então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).\n"
+      ],
+      "id": "d4b80a6b"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "venv",
+      "language": "python",
+      "display_name": "venv",
+      "path": "/Users/william/Library/Jupyter/kernels/venv"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

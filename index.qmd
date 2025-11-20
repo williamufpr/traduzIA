@@ -9,9 +9,6 @@ search: false
 repo-actions: false
 image: images/rwds-logo-150px.png
 
-
-
-
 toc: false
 ---
 
@@ -46,7 +43,8 @@ A ideia deste site é abordar temas do campo da Inteligência Artificial para le
 ::::::
 
 :::: {#latest-articles-section}
-## Artigos Recentes
+### Artigos Recentes
+
 ---
 listing: 
   id: latest-blogs 
