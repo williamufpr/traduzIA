@@ -1,0 +1,201 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação Jogo da Velha</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            background-color: #f0f2f6; /* Cor de fundo suave */
+            margin: 0;
+            padding: 20px;
+        }
+
+        canvas {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+            height: 1.5rem; /* Altura fixa para não pular */
+        }
+
+        .player-x { color: #e74c3c; }
+        .player-o { color: #3498db; }
+    </style>
+</head>
+<body>
+
+    <!-- Área do Jogo -->
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    
+    <!-- Texto de Status -->
+    <div class="status" id="statusText">Iniciando simulação...</div>
+
+    <script>
+        // Configurações Iniciais
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const statusText = document.getElementById('statusText');
+        
+        const size = 300;
+        const cellSize = size / 3;
+        let board = ['', '', '', '', '', '', '', '', '']; // Tabuleiro vazio
+        let currentPlayer = 'X';
+        let gameActive = true;
+        let moveDelay = 800; // Milissegundos entre jogadas
+
+        // Desenha as linhas do tabuleiro
+        function drawGrid() {
+            ctx.beginPath();
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#333';
+            ctx.lineCap = 'round';
+
+            // Linhas Verticais
+            ctx.moveTo(cellSize, 10);
+            ctx.lineTo(cellSize, size - 10);
+            ctx.moveTo(cellSize * 2, 10);
+            ctx.lineTo(cellSize * 2, size - 10);
+
+            // Linhas Horizontais
+            ctx.moveTo(10, cellSize);
+            ctx.lineTo(size - 10, cellSize);
+            ctx.moveTo(10, cellSize * 2);
+            ctx.lineTo(size - 10, cellSize * 2);
+
+            ctx.stroke();
+        }
+
+        // Desenha um X na posição específica
+        function drawX(col, row) {
+            const offset = 25;
+            const x = col * cellSize;
+            const y = row * cellSize;
+
+            ctx.beginPath();
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = '#e74c3c'; // Vermelho
+            
+            ctx.moveTo(x + offset, y + offset);
+            ctx.lineTo(x + cellSize - offset, y + cellSize - offset);
+            
+            ctx.moveTo(x + cellSize - offset, y + offset);
+            ctx.lineTo(x + offset, y + cellSize - offset);
+            
+            ctx.stroke();
+        }
+
+        // Desenha um O na posição específica
+        function drawO(col, row) {
+            const offset = 25;
+            const x = col * cellSize + cellSize / 2;
+            const y = row * cellSize + cellSize / 2;
+            const radius = (cellSize / 2) - offset;
+
+            ctx.beginPath();
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = '#3498db'; // Azul
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        // Atualiza a tela inteira
+        function updateScreen() {
+            ctx.clearRect(0, 0, size, size);
+            drawGrid();
+            
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === '') continue;
+                
+                const col = i % 3;
+                const row = Math.floor(i / 3);
+                
+                if (board[i] === 'X') drawX(col, row);
+                else drawO(col, row);
+            }
+        }
+
+        // Verifica vitória
+        function checkWin() {
+            const winConditions = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Linhas
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Colunas
+                [0, 4, 8], [2, 4, 6]             // Diagonais
+            ];
+
+            for (let condition of winConditions) {
+                const [a, b, c] = condition;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    return board[a];
+                }
+            }
+            return null;
+        }
+
+        // Lógica principal da simulação
+        function gameLoop() {
+            if (!gameActive) return;
+
+            // 1. Encontrar espaços vazios
+            const emptyIndices = board.map((val, idx) => val === '' ? idx : null).filter(val => val !== null);
+
+            // 2. Verificar fim de jogo (Vitória ou Empate)
+            const winner = checkWin();
+            if (winner) {
+                statusText.innerHTML = `Vencedor: <span class="player-${winner.toLowerCase()}">${winner}</span>! Reiniciando...`;
+                gameActive = false;
+                setTimeout(resetGame, 2000);
+                return;
+            }
+
+            if (emptyIndices.length === 0) {
+                statusText.innerText = "Empate! Reiniciando...";
+                gameActive = false;
+                setTimeout(resetGame, 2000);
+                return;
+            }
+
+            // 3. Fazer jogada aleatória
+            statusText.innerHTML = `Vez do jogador: <span class="player-${currentPlayer.toLowerCase()}">${currentPlayer}</span> (Aleatório)`;
+            
+            // Pequeno delay para parecer que o computador está "pensando"
+            setTimeout(() => {
+                if(!gameActive) return; // Previne jogada após reset
+
+                const randomIndex = Math.floor(Math.random() * emptyIndices.length);
+                const move = emptyIndices[randomIndex];
+
+                board[move] = currentPlayer;
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                
+                updateScreen();
+                gameLoop(); // Chama o próximo turno
+            }, moveDelay);
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            gameActive = true;
+            statusText.innerText = "Iniciando nova partida...";
+            updateScreen();
+            gameLoop();
+        }
+
+        // Iniciar
+        drawGrid();
+        gameLoop();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+---
+title: "Blog Index"
+topic: "index"
+listing: 
+  contents: /
+  type: grid  
+---
+

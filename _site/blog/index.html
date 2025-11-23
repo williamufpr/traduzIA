@@ -132,10 +132,8 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../rwds.css">
 <meta property="og:title" content="Blog Index – IA Traduzida">
-<meta property="og:image" content="https://william-alencar.quarto.pub/traduzia/images/tic-tac-toe.png">
+<meta property="og:image" content="../images/tic-tac-toe.png">
 <meta property="og:site_name" content="IA Traduzida">
-<meta property="og:image:height" content="506">
-<meta property="og:image:width" content="772">
 </head>
 
 <body class="nav-fixed">
@@ -146,7 +144,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/rwds-logo-150px.png" alt="Real World Data Science brand" class="navbar-logo">
+    <img src="../images/traduzia-logo.png" alt="Real World Data Science brand" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -174,10 +172,6 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../about-me.html">
  <span class="dropdown-text">Quem ?</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../contact.qmd">
- <span class="dropdown-text">Faça Contato</span></a>
   </li>  
     </ul>
   </li>
@@ -223,7 +217,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="TWFjaGluZSUyMExlYXJuaW5n" data-listing-date-sort="1763175600000" data-listing-file-modified-sort="1763586288051" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="438">
+<div class="g-col-1" data-index="0" data-categories="TWFjaGluZSUyMExlYXJuaW5n" data-listing-date-sort="1763175600000" data-listing-file-modified-sort="1763601917098" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="512">
 <a href="../blog/quarto-post/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -418,7 +412,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/william-alencar\.quarto\.pub\/traduzia");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

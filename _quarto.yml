@@ -3,12 +3,12 @@ project:
   output-dir: _site
   resources: 
     - "!data/**"
-    - "blog/first-post/*.html"
+    - "blog/**"
     
 website:
   title: "IA Traduzida"
 
-  image: "images/rwds-logo-150px.png"
+  image: "images/traduzia-logo.png"
   open-graph: true
   page-footer:
     background: "#000000"
@@ -24,7 +24,7 @@ website:
   navbar:
     toggle-position: right
     background:  "#f0eeeb"
-    logo: images/rwds-logo-150px.png
+    logo: images/traduzia-logo.png
     logo-alt: "Real World Data Science brand"
     title: false
     collapse-below: lg
@@ -41,8 +41,7 @@ website:
         menu: 
         - text: "Quem ?"
           href: about-me.qmd
-        - text: "Faça Contato"
-          href: contact.qmd
+
    
 
 

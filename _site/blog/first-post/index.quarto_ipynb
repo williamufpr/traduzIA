@@ -1,0 +1,113 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"O Tarifaço Trump\"\n",
+        "description: \"Análise da Pauta exportadora do Brasil e o Tarifaço de TRUMP\"\n",
+        "author: \"William Alencar\"\n",
+        "date: \"8/15/2025\"\n",
+        "image: \"../../assets/images/graf-mapa-mundo.png\"\n",
+        "categories:\n",
+        "  - Economia\n",
+        "  - Economics\n",
+        "  - Politica\n",
+        "  - Politics\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "A imposição de tarifas altíssimas às exportações brasileiras para os Estados Unidos agitaram a política e a economia nos últimos 30 dias.\n",
+        "\n",
+        "A cobertura da imprensa produziu uma perpecção de DESASTRE, de que o impacto destas tarifas iria arrasar a economia Brasileira, ainda que em alguns momentos pontuassem a verdadeira dimenssão do impacto em números.\n",
+        "\n",
+        "Eu fiquei impactado pela falta de um debate mais ponderado separando a política da economia, ao menos para propósitos didáticos e de melhor comunicação.\n",
+        "\n",
+        "Sabemos que alguns setores são impactados SEVERAMENTE e claro que deve dar-se atenção a isso mas ainda assim considero que o debate não transmitiu adequadamente algumas ponderações que me parecem bastante pertinentes.\n",
+        "\n",
+        "Por isso eu quis escrever alguns artigos salientando pontos que são demonstrados pelos dados disponíveis sobre esse tópico .\n",
+        "\n",
+        "Vamos iniciar verificando os totais e os principais destinos das exportações brasileiras.\n",
+        "\n",
+        "::: {.columns}\n",
+        "::: {.column width=\"50%\"}\n",
+        "![Exportações Brasileira até julho/2025](info-export-ytd2025.png){style=\"float:left; margin-right:15px\" width=\"241\"}\n",
+        ":::\n",
+        "\n",
+        "::: {.column width=\"50%\"}\n",
+        "Com números consolidados até julho deste ano (2025), o Brasil exportou US\\$ 198 (cento e noventa e oito) bilhões de dólares .\n",
+        "\n",
+        "Vamos agora observar os principais parceiros comerciais, ou destinos da exportações brasileiras .\n",
+        ":::\n",
+        ":::\n",
+        "\n",
+        "![Destinos de Exportações Brasil](tree-mapa-mundo.png){width:400px=\"\" style=\"float:left; margin-right:15px\" width=\"450\"} Observamos que os Estados Unidos representam 12% e a China representa mais que o dobro .\n",
+        "\n",
+        "Claro, 12% não é desprezível mas vamos detalhar um pouco mais .\\\n",
+        "O que será que vendemos aos EUA ?\n",
+        "\n",
+        "Vamos analisar a pauta de exportação utilizando a classificação utilizada pelo bloco MERCOSUL, referenciada por NCM .\n",
+        "\n",
+        "::: {.columns}\n",
+        "::: {.column width=\"100%\"}\n"
+      ],
+      "id": "bb68cd8e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: false \n",
+        "# | warning: false \n",
+        "\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns \n",
+        "\n",
+        "dados = pd.read_excel(\"../../data/exportation2025.xlsx\", sheet_name=\"Resultado\")\n",
+        "agrupado = (dados.groupby([\"Descrição NCM\"])[\"2025 - Valor US$ FOB\"].sum().reset_index().sort_values(by=\"2025 - Valor US$ FOB\",ascending=False))\n",
+        "\n",
+        "agrupado[\"%\"] = agrupado[\"2025 - Valor US$ FOB\"] / agrupado[\"2025 - Valor US$ FOB\"].sum() * 1 \n",
+        "agrupado[\"% acumulado\"] =  agrupado[\"%\"].cumsum() \n",
+        "\n",
+        "ranking = agrupado.sort_values(by=\"2025 - Valor US$ FOB\",ascending=False)\n",
+        "\n",
+        "top80 = agrupado[agrupado[\"% acumulado\"] <= 80]\n",
+        "print(top80)\n",
+        "\n",
+        "plt.figure(figsize=(12, 6))\n",
+        "plt.bar(top80[\"Descrição NCM\"], top80[\"2025 - Valor US$ FOB\"])\n",
+        "plt.xticks(rotation=75, ha=\"right\")\n",
+        "plt.title(\"Exportações - Produtos que representam 80% do total\")\n",
+        "plt.ylabel(\"Valor US$ FOB (2025)\")\n",
+        "plt.tight_layout()\n",
+        "plt.show()\n"
+      ],
+      "id": "20cdc850",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        ":::"
+      ],
+      "id": "57b99b34"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.11/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

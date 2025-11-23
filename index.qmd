@@ -7,7 +7,7 @@ editor: source
 sidebar: false
 search: false
 repo-actions: false
-image: images/rwds-logo-150px.png
+image: images/traduzia-logo.png
 
 toc: false
 ---

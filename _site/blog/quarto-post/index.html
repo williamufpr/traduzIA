@@ -78,10 +78,8 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="O Código do Jogo da Velha para o Aprendizado por Reforço – IA Traduzida">
 <meta property="og:description" content="Apresentando as estruturas de dados do Jogo da Velha">
-<meta property="og:image" content="https://william-alencar.quarto.pub/traduzia/images/tic-tac-toe.png">
+<meta property="og:image" content="../../images/tic-tac-toe.png">
 <meta property="og:site_name" content="IA Traduzida">
-<meta property="og:image:height" content="506">
-<meta property="og:image:width" content="772">
 </head>
 
 <body class="nav-fixed">
@@ -92,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/rwds-logo-150px.png" alt="Real World Data Science brand" class="navbar-logo">
+    <img src="../../images/traduzia-logo.png" alt="Real World Data Science brand" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -120,10 +118,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../about-me.html">
  <span class="dropdown-text">Quem ?</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../contact.qmd">
- <span class="dropdown-text">Faça Contato</span></a>
   </li>  
     </ul>
   </li>
@@ -208,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Para os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.</p>
 <p>Como, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador .</p>
 <p>Vamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha.</p>
-<div id="9949be38" class="cell center-output" data-execution_count="1">
+<div id="468b7c0e" class="cell center-output" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code> Tabuleiro do JOgo da Velha
 
@@ -228,9 +222,16 @@ Fim</code></pre>
 </section>
 <section id="como-o-computador-joga" class="level3">
 <h3 class="anchored" data-anchor-id="como-o-computador-joga">Como o computador Joga ?</h3>
-<p>Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? Nós, humanos, utilizamos o chamado raciocínio <a href="https://www.significados.com.br/heuristica/">heurístico</a> ( o link te leva para um bom artigo em português caso deseja aprender mais ) e reconhcimento de padrões.</p>
+<p>Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? Nós, humanos, utilizamos o chamado raciocínio <a href="https://www.significados.com.br/heuristica/">heurístico</a> ( o link te leva para uma definição objetiva de heurística caso deseja aprender mais ) e reconhecimento de padrões.</p>
 <p>É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades .</p>
-<p>Mas o computador não possui raciocínio heurístico então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele, quando do oponente ( que também pode ser um programa ).</p>
+<p>Mas o computador não possui raciocínio heurístico, então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).</p>
+<p>Um programa de computador para jogar o Jogo da Velha precisa :</p>
+<ul>
+<li><p>Que as regras do jogo sejam definidas</p></li>
+<li><p>Que as definições de vitória e derrota sejam definidas</p></li>
+<li><p>Que o estado/status do jogo seja conhecido a cada movimento</p></li>
+</ul>
+<p>Estes três pontos podem ser generalizados para qualquer jogo, do xadrez ao alpha go, lembrando que no caso de jogos como xadrez o tópico sobre regras torna-se mais complexo uma vez que cada tipo de peça tem movimentos específicos que são permitidos ou não .</p>
 
 
 </section>
@@ -327,7 +328,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/william-alencar\.quarto\.pub\/traduzia");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -1,20 +1,10 @@
 {
   "listingMap": {
-    "home.qmd": [
-      "blog"
-    ],
     "index.qmd": [
       "blog"
     ],
     "blog/index.qmd": [
       "/"
-    ],
-    "latest-content.qmd": [
-      "/reinforce-learning",
-      "/machine-learning",
-      "/data-science",
-      "/blog",
-      "!index.qmd"
     ]
   }
 }
