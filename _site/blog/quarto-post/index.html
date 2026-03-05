@@ -191,10 +191,10 @@ ul.task-list li input[type="checkbox"] {
 <h1>O jogo da velha ou Tic Tac Toe</h1>
 <p>Todo mundo já jogou o Jogo da Velha não é mesmo ?</p>
 <p>O jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.</p>
-<p>Mas você já imaginou de que forma um computador jogaria este jogo tão simples ?</p>
+<p>Mas você já imaginou de que forma um computador ( na verdade um programa de computador, mas para para este arquivo vamos simplificar a designação e utilizar o termo computador ) jogaria este jogo tão simples ?</p>
 <iframe src="tic-tac-toe-new.html" width="220" height="220" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
 </iframe>
-<p>Essa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.</p>
+<p>Essa simplicidade do jogo é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.</p>
 <p>Este artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .</p>
 <section id="o-campo-de-batalha" class="level3">
 <h3 class="anchored" data-anchor-id="o-campo-de-batalha">O campo de batalha</h3>
@@ -202,16 +202,16 @@ ul.task-list li input[type="checkbox"] {
 <p>Para os programadores é uma matrix, 3x3, ou seja, três linhas e três colunas.</p>
 <p>Como, por hora, queremos apenas compreender as estruturas não vamos investir tempo ( e código ) na parte visual, o objetivo é apresentar de forma bastante clara como o jogo é representado no computador .</p>
 <p>Vamos então criar uma estrutura de memória para ser o tabuleiro do Jogo da Velha.</p>
-<div id="468b7c0e" class="cell center-output" data-execution_count="1">
+<div id="0f132e5d" class="cell center-output" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code> Tabuleiro do JOgo da Velha
 
 
-   |   |  
+0  |0  |0 
 ------------
-   |   |  
+0  |0  |0 
 ------------
-   |   |  
+0  |0  |0 
 
 
 Tipo de dado:  &lt;class 'list'&gt; Tamanho :  3
@@ -222,12 +222,14 @@ Fim</code></pre>
 </section>
 <section id="como-o-computador-joga" class="level3">
 <h3 class="anchored" data-anchor-id="como-o-computador-joga">Como o computador Joga ?</h3>
-<p>Agora vamos pensar sobre de que forma o computador decide que espaços preencher ? Nós, humanos, utilizamos o chamado raciocínio <a href="https://www.significados.com.br/heuristica/">heurístico</a> ( o link te leva para uma definição objetiva de heurística caso deseja aprender mais ) e reconhecimento de padrões.</p>
+<p>Agora vamos pensar sobre de que forma o computador decide que espaços preencher, em que ordem e como reage à jogada de seu oponente ?</p>
+<p>Nós, humanos, utilizamos o chamado raciocínio <a href="https://www.significados.com.br/heuristica/">heurístico</a> ( o link te leva para uma definição objetiva de heurística caso deseja aprender mais ) e reconhecimento de padrões.</p>
 <p>É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades .</p>
-<p>Mas o computador não possui raciocínio heurístico, então o programa de computador precisa fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).</p>
+<p>Mas , usualmente , o computador não possui raciocínio heurístico como nós humanos ( iremos detalhar esta questão no 2o. artigo ) , então o programa de computador precisa calcular cada jogada numa abordagem de busca sistemática pela solução .</p>
+<p>Para fazer esta busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).</p>
 <p>Um programa de computador para jogar o Jogo da Velha precisa :</p>
 <ul>
-<li><p>Que as regras do jogo sejam definidas</p></li>
+<li><p>Que as regras do jogo sejam definidas : tabuleiro, regras de jogadas, etc.</p></li>
 <li><p>Que as definições de vitória e derrota sejam definidas</p></li>
 <li><p>Que o estado/status do jogo seja conhecido a cada movimento</p></li>
 </ul>

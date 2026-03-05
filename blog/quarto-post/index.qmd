@@ -27,13 +27,13 @@ Todo mundo já jogou o Jogo da Velha não é mesmo ?
 
 O jogo é bastante previsível e invariavelmente dá empate, exceto se um dos jogadores estiver absolutamente desatento.
 
-Mas você já imaginou de que forma um computador jogaria este jogo tão simples ?
+Mas você já imaginou de que forma um computador ( na verdade um programa de computador, mas para para este arquivo vamos simplificar a designação e utilizar o termo computador ) jogaria este jogo tão simples ?
 
 <iframe src="tic-tac-toe-new.html" width="220" height="220" style="border:none; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
 
 </iframe>
 
-Essa simplicidade é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.
+Essa simplicidade do jogo é uma aliada da didática pois auxilia na apresentação dos conceitos relacionados a estruturas de dados e os códigos que o computador executa para jogar o Jogo da Velha.
 
 Este artigo é o primeiro de uma série onde utilizarei o Jogo da Velha para apresentar conceitos iniciais sobre Inteligência Artificial .
 
@@ -60,7 +60,7 @@ def geraTabuleiro():
 def imprimeTabuleiro(tabuleiro): 
   print("\n")
   for idx, row in enumerate(tabuleiro): 
-    print(" " + " | ".join(row))
+    print(" " + " |".join(row))
     if idx < len(tabuleiro) - 1: 
       print("-" * (len(tabuleiro) * 4))
   print("\n")
@@ -69,11 +69,11 @@ if __name__ == "__main__":
   print(" Tabuleiro do JOgo da Velha") 
   jogo = geraTabuleiro() 
   imprimeTabuleiro(jogo)
-  print("Tipo de dado: ", type(jogo), "Tamanho : ", len(jogo))
+  
   print("Fim")
 ```
 
-Acima vemos que a estrutura é uma lista de tamanho 3 ( 3 linhas ) no python.
+Acima vemos que a estrutura é uma matriz 3x3 e representamos sem qualquer marcador para significar que o jogo ainda não começo .
 
 ### Como o computador Joga ?
 
@@ -83,16 +83,18 @@ Nós, humanos, utilizamos o chamado raciocínio [heurístico](https://www.signif
 
 É isso que nos leva, sempre que somos o 1o. a jogar, escolher a posição central mesmo sem fazer cálculos de possibilidades .
 
-Mas o computador não possui raciocínio heurístico, então o programa de computador precisa aprender a jogar e uma abordagem para esse processo é chamada de Aprendizado por Reforço .
+Mas , usualmente , o computador não possui raciocínio heurístico como nós humanos ( iremos detalhar esta questão no 2o. artigo ) , então o programa de computador precisa calcular cada jogada numa abordagem de busca sistemática pela solução .
 
-fazer uma busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).
+Para fazer esta busca para o melhor movimento a cada rodada e deixar registrado como está o tabuleiro a cada movimento, tanto dele (programa), quando do oponente ( que também pode ser um programa ).
 
 Um programa de computador para jogar o Jogo da Velha precisa :
 
--   Que as regras do jogo sejam definidas
+-   Que as regras do jogo sejam definidas : tabuleiro, regras de jogadas, etc.
 
 -   Que as definições de vitória e derrota sejam definidas
 
 -   Que o estado/status do jogo seja conhecido a cada movimento
 
 Estes três pontos podem ser generalizados para qualquer jogo, do xadrez ao alpha go, lembrando que no caso de jogos como xadrez o tópico sobre regras torna-se mais complexo uma vez que cada tipo de peça tem movimentos específicos que são permitidos ou não .
+
+### Que se inicie o Jogo 
